@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naomi's Birthday Celebration!</title>
+  <style>
+    /* General Styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+    }
+
+    /* Container for the content */
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      text-align: center;
+      padding: 20px;
+      background: url('https://i.imgur.com/HeelerFamily.png') no-repeat center center/cover;
+    }
+
+    /* Birthday Message */
+    h1 {
+      font-size: 4rem;
+      margin: 0;
+      animation: bounce 2s infinite;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin: 10px 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Animation for the birthday message */
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    /* Countdown Timer */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .countdown div {
+      font-size: 2rem;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* RSVP Button */
+    .button {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 1.5rem;
+      background-color: #ff6f61;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #ff3b2f;
+    }
+
+    /* Footer */
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Naomi's Birthday Celebration!</h1>
+    <h2>Join us on March 29 at Chuck E. Cheese!</h2>
+    <p>Get ready to celebrate Naomi’s special day in style! 🎉 We’re heading to <strong>Chuck E. Cheese</strong> for a birthday bash filled with games, pizza, and endless fun. Whether you’re a close friend, family member, or just someone who loves a good time, you’re invited to join us for an unforgettable celebration. Help us make Naomi’s birthday extra special by RSVPing below and letting us know you’ll be there. We can’t wait to see you!</p>
+
+    <!-- Countdown Timer -->
+    <div class="countdown" id="countdown">
+      <div><span id="days">00</span> Days</div>
+      <div><span id="hours">00</span> Hours</div>
+      <div><span id="minutes">00</span> Minutes</div>
+      <div><span id="seconds">00</span> Seconds</div>
+    </div>
+
+    <!-- RSVP Button -->
+    <button class="button" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScEmeZvUL3XQyozjbM67fMLDUQHsWrJLe6uGnrWnOItsR9mHQ/viewform?usp=header'">RSVP Now!</button>
+    <footer>Made with ❤️ for Naomi's Birthday</footer>
+  </div>
+
+  <script>
+    // Countdown Timer Script
+    const countdown = () => {
+      const birthday = new Date('March 29, 2025 00:00:00').getTime();
+      const now = new Date().getTime();
+      const difference = birthday - now;
+
+      const seconds = 1000;
+      const minutes = seconds * 60;
+      const hours = minutes * 60;
+      const days = hours * 24;
+
+      const textDays = Math.floor(difference / days);
+      const textHours = Math.floor((difference % days) / hours);
+      const textMinutes = Math.floor((difference % hours) / minutes);
+      const textSeconds = Math.floor((difference % minutes) / seconds);
+
+      document.getElementById('days').innerText = textDays;
+      document.getElementById('hours').innerText = textHours;
+      document.getElementById('minutes').innerText = textMinutes;
+      document.getElementById('seconds').innerText = textSeconds;
+    };
+
+    setInterval(countdown, 1000);
+  </script>
+</body>
+</html>
